@@ -5,75 +5,115 @@
 // SYNTAX ERRORS
 
 // 1.
-// if (x > 5 {
+// let x = 10;
+// if (x > 5) {
 //     console.log("Hello, World!");
 // }
 
-// Let's check the error message
+// SyntaxError: Unexpected token '{'
 
 // 2.
-// const message = 'Hello, World!;
+const message = 'Hello, World!';
+// SyntaxError: Invalid or unexpected token
 
 // 3.
-// function myFunction()
-//   console.log("Hello!");
-// }
+function myFunction() {
+  console.log("Hello!");
+}
 
 // 4.
-// function() {}
+function name() {}
+
+// SyntaxError: Function statements require a function name
 
 // 5.
-// function whatsWrong() {
+function whatsWrong() {}
+
+// SyntaxError: Unexpected end of input - Missing a closing curly bracket.
 
 // 6.
 
-// let a = 6;
-// let a = 5;
+let a = 6;
+a = 5;
 
-// 7.
+// SyntaxError: Identifier 'a' has already been declared
 
-// TYPE ERRORS
+// TYPE ERRORS - when attempting to modify a value that cannot be changed;
 
 // 1.
 
-// const a = 9
-// a = 5
+const b = 9
+// b = 5
+
+// TypeError: Assignment to constant variable.
 
 // 2.
 
-// const obj = { name: {
-//     first: "Raz",
-//     last: "Efron"
-// }}
+const obj = { name: {
+    first: "Raz",
+    last: "Efron"
+}}
 
-// obj.naem.first
+obj.name.first // obj.naem returns undefined.
+
+function popFirstAndReturn(arr) {
+    return arr.pop()
+}
+
+// popFirstAndReturn(); // Am I passing a value/argument to my function?
+// TypeError: Cannot read properties of undefined (reading 'pop')
+
+// Cannot read properties of undefined (reading 'first')
 
 // 3.
 
-// const arr = [1,2,3]
+const arr = [1,2,3]
+const object = {};
 // arr();
+// arr.mep()
+
+// object.push("arr")
+
+// TypeError: arr is not a function
 
 // REFERENCE ERRORS
 
 // 1.
 
-// console.log(myVariable)
+// console.log(myVariable);
+
+function findMax(arr) {
+    let max = arr[0];
+    for (let num of arr) {
+        max = max > num ? max : num
+    }
+
+    return max
+}
+
+// ReferenceError: myVariable is not defined
+// declaring variables in other scopes
+// forgetting to pass parameters in the params list of a function
+// forgetting to declare a variable altogether
+
+findMax([1,3,2])
+
 
 // 2.
 
-// console.log(x);
-// let x = 5
-
-// console.log
+// console.log(y);
+// let y = 5;
+// ReferenceError: Cannot access 'y' before initialization
 
 // debugger in vscode
 
 function sumOfAllOddElements(arr) {
     let sum = 0;
 
-    for (let i = 1; i < arr.length -1; i++) {
-        if (sum % 2 === 0) {
-            sum += i;
+    for (let i = 0; i < arr.length; i++) {
+        debugger;
+        if (arr[i] % 2 !== 0) {
+            sum += arr[i];
         }
     }
     return sum
